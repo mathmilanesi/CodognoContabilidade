@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Codogno Contabilidade | Assessoria e Consultoria</title>
+
+    <!-- Favicon e Manifest -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/ico/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/ico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/ico/favicon-16x16.png">
+    <link rel="manifest" href="./assets/images/ico/site.webmanifest">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+
+    <!-- Header Fixo -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo" onclick="app.navigate('home')">
+                <img src="./assets/images/codognologotipo.png" alt="Codogno Contabilidade" class="logo-img">
+            </a>
+            
+            <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a class="nav-link active" onclick="app.navigate('home')">Home</a></li>
+                    <li><a class="nav-link" onclick="app.navigate('sobre')">Sobre Nós</a></li>
+                    <li><a class="nav-link" onclick="app.navigate('servicos')">Serviços</a></li>
+                    <li><a class="nav-link" onclick="app.navigate('contato')">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- Overlay será criado via JavaScript -->
+    </header>
+
+    <main id="app-content">
+        
+        <!-- ================= VISTA: HOME ================= -->
+        <section id="home" class="page-view active">
+            <!-- Hero Section -->
+            <div class="hero">
+                <!-- Fundo Animado (Bolhas Douradas) -->
+                <div class="hero-bg-anim" id="hero-anim"></div>
+
+                <div class="container hero-content">
+                    <div class="hero-text">
+                        <h1>Excelência em<br><span>Assessoria Contábil</span></h1>
+                        <p>Mais de 7 anos de experiência garantindo segurança e inteligência fiscal para o seu negócio.</p>
+                        <div class="hero-actions">
+                            <button onclick="app.navigate('servicos')" class="btn btn-primary">
+                                <i class="fas fa-file-signature"></i> Abrir Empresa
+                            </button>
+                            <button onclick="app.navigate('contato')" class="btn btn-outline">
+                                <i class="fas fa-phone-alt"></i> Fale Conosco
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Área Ilustrativa (Logo + Cards Animados) - VISÍVEL APENAS NO DESKTOP -->
+                    <div class="hero-illustration">
+                        <img src="./assets/images/codognologotipo-branco.png" alt="Codogno Logo" class="hero-logo-img">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEÇÃO PARCEIROS -->
+            <section class="partners-section">
+                <div class="container">
+                    <p class="partners-title">Empresas que confiam em nossa gestão</p>
+                    <div class="partners-track">
+                        <!-- Primeira linha (13 parceiros) -->
+                        <div class="partner-logo">
+                            <img src="./assets/images/partners/MacadamiaBrasilis.png" alt="Macadâmia Brasilis">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="./assets/images/partners/tmtsuportes.jpg" alt="TMT Suporte">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="./assets/images/partners/coliseudelivery.jpeg" alt="Coliseu Delivery">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="./assets/images/partners/comerciodeiphones.png" alt="Comércio de Iphone">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="./assets/images/partners/smwear.jpg" alt="SM Wear">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="./assets/images/partners/FerigattiRepresentacoes.png" alt="Ferigatti Representações">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="./assets/images/partners/AgroNossaSenhoraAparecida.jpeg" alt="Agro Nossa Senhora Aparecida">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="./assets/images/partners/mokapodontologia.jpg" alt="Mokap Odontologia">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="./assets/images/partners/KLLavaRapido.png" alt="KL Lava Rápido">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="./assets/images/partners/MoveisPlanejadoPicaPau.png" alt="Móveis Planejado Pica Pau">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="./assets/images/partners/MobiliMarcenaria.png" alt="Mobili Marcenaria">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="./assets/images/partners/SweetCarol.jpg" alt="Sweet Carol">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="./assets/images/partners/DonJohn.png" alt="Don John">
+                        </div>
+                        
+                        <!-- Segunda linha (duplicado para animação contínua) -->
+                        <div class="partner-logo">
+                            <img src="./assets/images/partners/MacadamiaBrasilis.png" alt="Macadâmia Brasilis">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="./assets/images/partners/tmtsuportes.jpg" alt="TMT Suporte">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="./assets/images/partners/coliseudelivery.jpeg" alt="Coliseu Delivery">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="./assets/images/partners/comerciodeiphones.png" alt="Comércio de Iphone">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="./assets/images/partners/smwear.jpg" alt="SM Wear">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="./assets/images/partners/FerigattiRepresentacoes.png" alt="Ferigatti Representações">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="./assets/images/partners/AgroNossaSenhoraAparecida.jpeg" alt="Agro Nossa Senhora Aparecida">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="./assets/images/partners/mokapodontologia.jpg" alt="Mokap Odontologia">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="./assets/images/partners/KLLavaRapido.png" alt="KL Lava Rápido">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="./assets/images/partners/MoveisPlanejadoPicaPau.png" alt="Móveis Planejado Pica Pau">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="./assets/images/partners/MobiliMarcenaria.png" alt="Mobili Marcenaria">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="./assets/images/partners/SweetCarol.jpg" alt="Sweet Carol">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="./assets/images/partners/DonJohn.png" alt="Don John">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Highlights Section -->
+            <section class="highlights reveal">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Diferenciais</h2>
+                        <p>Por que escolher a Codogno Contabilidade?</p>
+                    </div>
+                    
+                    <div class="highlight-grid">
+                        <div class="highlight-card">
+                            <div class="icon-box"><i class="fas fa-clock"></i></div>
+                            <h3>Agilidade</h3>
+                            <p>Processos ágeis e digitais para otimizar o tempo da sua empresa.</p>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="icon-box"><i class="fas fa-check-double"></i></div>
+                            <h3>Segurança</h3>
+                            <p>Conformidade total com a legislação vigente, garantindo sua tranquilidade.</p>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="icon-box"><i class="fas fa-user-tie"></i></div>
+                            <h3>Atendimento Próximo</h3>
+                            <p>Equipe dedicada para um relacionamento transparente e próximo.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="container cta-section">
+                <h2>Pronto para migrar sua contabilidade?</h2>
+                <p>Cuidamos de todo o processo de transferência com total transparência.</p>
+                <button onclick="app.navigate('contato')" class="btn btn-primary">Solicitar Análise</button>
+            </section>
+        </section>
+
+
+        <!-- ================= VISTA: SOBRE NÓS ================= -->
+        <section id="sobre" class="page-view">
+            <div class="about-hero">
+                <div class="container about-hero-content">
+                    <h1>Sobre a Codogno</h1>
+                    <p>Tradição e inovação a serviço do seu crescimento.</p>
+                </div>
+            </div>
+
+            <div class="container about-grid">
+                <div class="about-text reveal">
+                    <h2 class="section-subtitle">Nossa Trajetória</h2>
+                    
+                    <p>
+                        A <strong>Codogno Contabilidade</strong> tem mais de 7 anos de experiência no mercado atendendo pequenas e grandes empresas nos mais diversos segmentos. 
+                    </p>
+                    
+                    <p>
+                        Sempre inovando e melhorando o relacionamento com seus clientes, procurando sempre manter um contato muito próximo.
+                    </p>
+
+                    <div class="about-cta-box">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Venha nos visitar</h3>
+                        <p>Convidamos você para vir conhecer nosso escritório em <strong>Itapira, estado de São Paulo</strong>.</p>
+                    </div>
+                </div>
+
+                <!-- ÁREA VISUAL -->
+                <div class="about-visual reveal">
+                    <img src="./assets/images/codognologotipo.png" alt="Escritório Codogno" class="about-img">
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="container reveal">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">7+</span>
+                        <span class="stat-label">Anos de Mercado</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Clientes Ativos</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24h</span>
+                        <span class="stat-label">Suporte Digital</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Comprometimento</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= VISTA: SERVIÇOS ================= -->
+        <section id="servicos" class="page-view">
+            <div class="services-hero">
+                <div class="container">
+                    <h2>Nossos Serviços</h2>
+                    <p>Soluções completas para gestão societária e fiscal.</p>
+                </div>
+            </div>
+
+            <div class="container services-container">
+                
+                <!-- CATEGORIA 1: Abertura e Empresa -->
+                <div class="service-category">
+                    <h3 class="category-title">Abertura e Gestão Societária</h3>
+                    
+                    <div class="service-row">
+                        <div class="service-card">
+                            <div class="service-content">
+                                <h4>Abrir Empresa</h4>
+                                <p>Processo especializado. Definimos o melhor regime tributário.</p>
+                                <ul>
+                                    <li>Registro na Junta Comercial</li>
+                                    <li>CNPJ e Alvarás</li>
+                                    <li>Abertura de conta PJ</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-content">
+                                <h4>Alteração Contratual</h4>
+                                <p>Mudança de endereço, inclusão de sócios ou alteração no objeto social.</p>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-content">
+                                <h4>Encerramento de Empresa</h4>
+                                <p>Processo seguro para baixa de CNPJ, garantindo quitação de pendências.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BOTÃO CENTRALIZADO -->
+                    <div class="category-cta">
+                        <button class="btn btn-whatsapp" onclick="app.contactWhatsapp('Abertura e Gestão Societária')">
+                            <i class="fab fa-whatsapp"></i> Tenho Interesse em Abertura e Gestão
+                        </button>
+                    </div>
+                </div>
+
+                <!-- CATEGORIA 2: Gestão Fiscal -->
+                <div class="service-category">
+                    <h3 class="category-title">Gestão Fiscal e Tributária</h3>
+                    
+                    <div class="service-row">
+                        <div class="service-card">
+                            <div class="service-content">
+                                <h4>Planejamento Tributário</h4>
+                                <p>Estudo para enquadrar sua empresa na forma de tributação mais econômica.</p>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-content">
+                                <h4>Escrita Fiscal</h4>
+                                <p>Emissão de notas, apuração de impostos e entrega de declarações.</p>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-content">
+                                <h4>Recuperação de Créditos</h4>
+                                <p>Análise de pagamentos indevidos nos últimos 5 anos para restituição.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category-cta">
+                        <button class="btn btn-whatsapp" onclick="app.contactWhatsapp('Gestão Fiscal e Tributária')">
+                            <i class="fab fa-whatsapp"></i> Tenho Interesse em Gestão Fiscal
+                        </button>
+                    </div>
+                </div>
+
+                <!-- CATEGORIA 3: Departamento Pessoal -->
+                <div class="service-category">
+                    <h3 class="category-title">Departamento Pessoal</h3>
+                    
+                    <div class="service-row">
+                        <div class="service-card">
+                            <div class="service-content">
+                                <h4>Folha de Pagamento</h4>
+                                <p>Cálculo mensal, adiantamento, 13º, férias e rescisões.</p>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-content">
+                                <h4>eSocial e FGTS</h4>
+                                <p>Gestão completa das obrigações trabalhistas digitais.</p>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-content">
+                                <h4>Consultoria Trabalhista</h4>
+                                <p>Orientação sobre legislação trabalhista e benefícios.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category-cta">
+                        <button class="btn btn-whatsapp" onclick="app.contactWhatsapp('Departamento Pessoal')">
+                            <i class="fab fa-whatsapp"></i> Tenho Interesse em Dep. Pessoal
+                        </button>
+                    </div>
+                </div>
+
+                <!-- CATEGORIA 4: Consultoria -->
+                <div class="service-category">
+                    <h3 class="category-title">Consultoria e Imposto de Renda</h3>
+                    
+                    <div class="service-row">
+                        <div class="service-card">
+                            <div class="service-content">
+                                <h4>BPO Financeiro</h4>
+                                <p>Terceirização do setor financeiro e fluxo de caixa.</p>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-content">
+                                <h4>Imposto de Renda PF</h4>
+                                <p>Declaração para investidores e empresários.</p>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-content">
+                                <h4>Certificado Digital</h4>
+                                <p>Emissão e renovação de certificados A1 e A3.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category-cta">
+                        <button class="btn btn-whatsapp" onclick="app.contactWhatsapp('Consultoria e Imposto de Renda')">
+                            <i class="fab fa-whatsapp"></i> Tenho Interesse em Consultoria
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= VISTA: CONTATO ================= -->
+        <section id="contato" class="page-view">
+            <div class="container contact-section">
+                <div class="section-header">
+                    <h2>Entre em Contato</h2>
+                    <p>Estamos à disposição para atender sua empresa.</p>
+                </div>
+
+                <div class="contact-wrapper">
+                    <div class="contact-info">
+                        <h3>Canais de Atendimento</h3>
+                        
+                        <div class="info-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <a href="https://wa.me/551938133809" target="_blank">
+                                <div>
+                                    <h5>WhatsApp</h5>
+                                    <p>(19) 3813-3809</p>
+                                </div>
+                            </a>
+                        </div>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h5>Telefone Fixo</h5>
+                                <p>(19) 3813-3809</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h5>E-mail</h5>
+                                <p>contato@codognocontabilidade.com.br</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h5>Endereço</h5>
+                                <p>Itapira - SP<br>Av. Principal, 1234 - Centro</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-area">
+                        <h3>Envie uma mensagem</h3>
+                        
+                        <form id="contactForm" onsubmit="app.sendEmail(event)">
+                            <div class="form-group">
+                                <label>Nome Completo</label>
+                                <input type="text" id="c-name" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Telefone</label>
+                                    <input type="tel" id="c-phone" class="form-control" placeholder="(19) 99999-9999" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>E-mail</label>
+                                    <input type="email" id="c-email" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Serviço de Interesse</label>
+                                <select id="c-service" class="form-control">
+                                    <option value="Abertura de Empresa">Abertura de Empresa</option>
+                                    <option value="Transferência">Transferência de Contador</option>
+                                    <option value="Imposto de Renda">Imposto de Renda</option>
+                                    <option value="Consultoria">Consultoria Geral</option>
+                                    <option value="Outros">Outros</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Mensagem</label>
+                                <textarea id="c-message" class="form-control"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i> Enviar E-mail
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo-footer" onclick="app.navigate('home')">
+                        <img src="./assets/images/codognologotipo-branco.png" alt="Codogno Contabilidade" class="footer-logo-img">
+                    </a>
+                    <p>
+                        Excelência em assessoria contábil. Soluções integradas para empresas que buscam segurança e crescimento sustentável.
+                    </p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="#" onclick="app.navigate('home')">Home</a></li>
+                        <li><a href="#" onclick="app.navigate('sobre')">Sobre Nós</a></li>
+                        <li><a href="#" onclick="app.navigate('servicos')">Serviços</a></li>
+                        <li><a href="#" onclick="app.navigate('contato')">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Serviços</h4>
+                    <ul>
+                        <li><a href="#" onclick="app.navigate('servicos')">Abertura de Empresa</a></li>
+                        <li><a href="#" onclick="app.navigate('servicos')">BPO Financeiro</a></li>
+                        <li><a href="#" onclick="app.navigate('servicos')">Imposto de Renda</a></li>
+                        <li><a href="#" onclick="app.navigate('servicos')">Certificado Digital</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Localização</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Itapira - SP</li>
+                        <li><i class="fas fa-phone"></i> (19) 3813-3809</li>
+                        <li><i class="fas fa-envelope"></i> contato@codogno.com.br</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2026 Codogno Contabilidade. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
