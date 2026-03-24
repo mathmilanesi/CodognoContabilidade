@@ -1,31 +1,32 @@
 const app = {
     whatsappNumber: "551938133809",
 
-    init: function() {
+    init: function () {
         this.setupNavigation();
         this.setupScrollReveal();
-        this.generateBubbles();
+        this.generateParticles();
         this.setupTouchEvents();
-        
+        this.setupCounterAnimation();
+
         // Navegar para hash se existir
         const hash = window.location.hash.substring(1);
-        if(hash) this.navigate(hash);
-        
+        if (hash) this.navigate(hash);
+
         // Prevenir zoom duplo no iOS
         this.preventDoubleTapZoom();
     },
 
-    setupNavigation: function() {
+    setupNavigation: function () {
         const mobileBtn = document.getElementById('mobile-toggle');
         const navMenu = document.getElementById('nav-menu');
-        
+
         // Criar overlay se não existir
         if (!document.querySelector('.mobile-overlay')) {
             const overlay = document.createElement('div');
             overlay.className = 'mobile-overlay';
             document.body.appendChild(overlay);
         }
-        
+
         const overlay = document.querySelector('.mobile-overlay');
 
         mobileBtn.addEventListener('click', (e) => {
@@ -60,12 +61,12 @@ const app = {
         });
     },
 
-    navigate: function(pageId) {
+    navigate: function (pageId) {
         // Atualizar links ativos
         document.querySelectorAll('.nav-link').forEach(link => {
             link.classList.remove('active');
             const onclick = link.getAttribute('onclick');
-            if(onclick && onclick.includes(pageId)) {
+            if (onclick && onclick.includes(pageId)) {
                 link.classList.add('active');
             }
         });
@@ -77,31 +78,37 @@ const app = {
 
         // Mostrar página alvo
         const targetPage = document.getElementById(pageId);
-        if(targetPage) {
+        if (targetPage) {
             targetPage.classList.add('active');
             // Scroll suave para o topo
             window.scrollTo({ top: 0, behavior: 'smooth' });
             // Fechar menu mobile se aberto
             this.closeMobileMenu();
-            
+
             // Atualizar URL hash sem recarregar a página
             window.history.pushState(null, null, `#${pageId}`);
         }
     },
 
-    toggleMobileMenu: function() {
+    toggleMobileMenu: function () {
         const navMenu = document.getElementById('nav-menu');
         const overlay = document.querySelector('.mobile-overlay');
         const mobileBtn = document.getElementById('mobile-toggle');
         const icon = mobileBtn.querySelector('i');
-        
+
         const isActive = navMenu.classList.contains('active');
-        
+
         if (!isActive) {
             // Abrir menu
             navMenu.classList.add('active');
             overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
+
+            // Pequeno delay para a transição funcionar
+            setTimeout(() => {
+                navMenu.classList.add('show');
+            }, 10);
+
             // Mudar ícone para X
             icon.classList.remove('fa-bars');
             icon.classList.add('fa-times');
@@ -113,16 +120,22 @@ const app = {
         }
     },
 
-    closeMobileMenu: function() {
+    closeMobileMenu: function () {
         const navMenu = document.getElementById('nav-menu');
         const overlay = document.querySelector('.mobile-overlay');
         const mobileBtn = document.getElementById('mobile-toggle');
         const icon = mobileBtn.querySelector('i');
-        
+
         if (navMenu.classList.contains('active')) {
-            navMenu.classList.remove('active');
+            navMenu.classList.remove('show');
             overlay.classList.remove('active');
             document.body.style.overflow = '';
+
+            // Esperar a animação terminar para remover a classe active
+            setTimeout(() => {
+                navMenu.classList.remove('active');
+            }, 400);
+
             // Mudar ícone para hambúrguer
             icon.classList.remove('fa-times');
             icon.classList.add('fa-bars');
@@ -131,15 +144,15 @@ const app = {
         }
     },
 
-    contactWhatsapp: function(serviceName) {
+    contactWhatsapp: function (serviceName) {
         const message = `Olá, vim pelo site da Codogno Contabilidade e tenho interesse na área: ${serviceName}. Gostaria de mais informações.`;
         const url = `https://wa.me/${this.whatsappNumber}?text=${encodeURIComponent(message)}`;
         window.open(url, '_blank');
     },
 
-    sendEmail: function(e) {
+    sendEmail: function (e) {
         e.preventDefault();
-        
+
         const name = document.getElementById('c-name').value.trim();
         const phone = document.getElementById('c-phone').value.trim();
         const email = document.getElementById('c-email').value.trim();
@@ -158,15 +171,15 @@ const app = {
         window.location.href = `mailto:contato@codognocontabilidade.com.br?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     },
 
-    setupScrollReveal: function() {
+    setupScrollReveal: function () {
         const reveals = document.querySelectorAll('.reveal');
-        
+
         const checkScroll = () => {
             const triggerBottom = window.innerHeight * 0.85;
-            
+
             reveals.forEach(reveal => {
                 const boxTop = reveal.getBoundingClientRect().top;
-                if(boxTop < triggerBottom) {
+                if (boxTop < triggerBottom) {
                     reveal.classList.add('active');
                 }
             });
@@ -174,7 +187,7 @@ const app = {
 
         // Verificar no carregamento
         checkScroll();
-        
+
         // Verificar no scroll com throttle
         let scrollTimeout;
         window.addEventListener('scroll', () => {
@@ -190,31 +203,37 @@ const app = {
         window.addEventListener('resize', checkScroll);
     },
 
-    generateBubbles: function() {
+    generateParticles: function () {
         const container = document.getElementById('hero-anim');
         if (!container) return;
-        
-        // Limpar bolhas existentes
-        container.innerHTML = '';
-        
-        const bubbleCount = window.innerWidth < 768 ? 8 : 15;
 
-        for(let i = 0; i < bubbleCount; i++) {
-            const bubble = document.createElement('div');
-            bubble.classList.add('bubble');
-            
-            const size = Math.random() * (window.innerWidth < 768 ? 40 : 60) + 20;
-            bubble.style.width = `${size}px`;
-            bubble.style.height = `${size}px`;
-            bubble.style.left = `${Math.random() * 100}%`;
-            bubble.style.animationDuration = `${Math.random() * 10 + 10}s`;
-            bubble.style.animationDelay = `${Math.random() * 5}s`;
-            
-            container.appendChild(bubble);
+        container.innerHTML = '';
+
+        // Menos elementos, porém maiores e mais elegantes
+        const particleCount = window.innerWidth < 768 ? 4 : 8;
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('hero-particle');
+
+            const width = Math.random() * 150 + 100;
+            const height = Math.random() * 150 + 100;
+
+            particle.style.width = `${width}px`;
+            particle.style.height = `${height}px`;
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+
+            // Rotação inicial e animação lenta
+            const duration = Math.random() * 20 + 30;
+            particle.style.animationDuration = `${duration}s`;
+            particle.style.animationDelay = `-${Math.random() * duration}s`;
+
+            container.appendChild(particle);
         }
     },
 
-    setupTouchEvents: function() {
+    setupTouchEvents: function () {
         // Prevenir scroll do body quando o menu está aberto
         document.addEventListener('touchmove', (e) => {
             if (document.body.classList.contains('menu-open')) {
@@ -224,20 +243,20 @@ const app = {
 
         // Melhorar toque em botões
         document.querySelectorAll('.btn, .nav-link').forEach(element => {
-            element.addEventListener('touchstart', function() {
+            element.addEventListener('touchstart', function () {
                 this.classList.add('touch-active');
             }, { passive: true });
 
-            element.addEventListener('touchend', function() {
+            element.addEventListener('touchend', function () {
                 this.classList.remove('touch-active');
             }, { passive: true });
         });
     },
 
-    preventDoubleTapZoom: function() {
+    preventDoubleTapZoom: function () {
         // Prevenir zoom duplo no iOS
         let lastTouchEnd = 0;
-        document.addEventListener('touchend', function(event) {
+        document.addEventListener('touchend', function (event) {
             const now = (new Date()).getTime();
             if (now - lastTouchEnd <= 300) {
                 event.preventDefault();
@@ -246,11 +265,49 @@ const app = {
         }, false);
     },
 
+    setupCounterAnimation: function () {
+        const stats = document.querySelectorAll('.stat-number');
+
+        const animate = (el) => {
+            const target = +el.getAttribute('data-target');
+            const duration = 2000;
+            const startTime = performance.now();
+
+            const update = (now) => {
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easedProgress = progress * (2 - progress);
+
+                const current = Math.floor(easedProgress * target);
+                el.innerText = current;
+
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    el.innerText = target;
+                }
+            };
+
+            requestAnimationFrame(update);
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animate(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        stats.forEach(stat => observer.observe(stat));
+    },
+
     // Função para recriar bolhas no resize (para responsividade)
-    handleResize: function() {
+    handleResize: function () {
         clearTimeout(this.resizeTimer);
         this.resizeTimer = setTimeout(() => {
-            this.generateBubbles();
+            this.generateParticles();
         }, 250);
     }
 };
@@ -258,14 +315,14 @@ const app = {
 // Inicializar quando o DOM estiver pronto
 document.addEventListener('DOMContentLoaded', () => {
     app.init();
-    
+
     // Adicionar listener para resize
     window.addEventListener('resize', () => {
         app.handleResize();
     });
-    
+
     // Lidar com navegação pelo botão voltar/avançar
-    window.addEventListener('popstate', function(event) {
+    window.addEventListener('popstate', function (event) {
         const hash = window.location.hash.substring(1);
         if (hash) {
             app.navigate(hash);
@@ -276,7 +333,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Prevenir comportamento padrão de formulário
-document.addEventListener('submit', function(e) {
+document.addEventListener('submit', function (e) {
     if (e.target.tagName === 'FORM') {
         const form = e.target;
         if (!form.checkValidity()) {
